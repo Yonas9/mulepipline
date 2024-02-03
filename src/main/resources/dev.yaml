@@ -4,6 +4,8 @@ http:
   port: "8081"
   path: "/action"
   
+mule:
+  version: "4.4.0"  
   
 cloudhub:
   username: "SelfLearn"

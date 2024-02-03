@@ -3,7 +3,8 @@ http:
   host: "0.0.0.0"
   port: "8081"
   path: "/action"
-  
+mule:
+  version: "4.4.0"  
   
 cloudhub:
   username: "SelfLearn"
@@ -15,5 +16,4 @@ cloudhub:
   workerType: "Micro"
   workers: "1"
 
-mule:
-  version:"4.4.0"
+
