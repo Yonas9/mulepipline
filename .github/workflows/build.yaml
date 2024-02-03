@@ -62,5 +62,5 @@ jobs:
           artifactName=$(ls *.jar | head -1)
           mvn deploy -DmuleDeploy \
            -Dmule.artifact=$artifactName \
-           -Dcloudhub.username="$USERNAME" \
-           -Dcloudhub.password="$PASSWORD"
+           -Dcloudhub.username=SelfLearn \
+           -Dcloudhub.password=LearnMUle#2023
