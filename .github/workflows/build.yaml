@@ -63,4 +63,4 @@ jobs:
           mvn deploy -DmuleDeploy \
            -Dmule.artifact=$artifactName \
            -Dcloudhub.username="SelfLearn" \
-           -Dcloudhub.password="LearnMUle#2023"
+           -Dcloudhub.password="LearnMule#2023"
