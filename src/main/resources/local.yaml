@@ -10,7 +10,7 @@ cloudhub:
   username: "SelfLearn"
   password: "LearnMule#2023"
   bg: "Student"
-  appName: "gitacctionmule"
+  appName: "githubandmule"
   environment: "Sandbox"
   region: "us-east-2"
   workerType: "Micro"
