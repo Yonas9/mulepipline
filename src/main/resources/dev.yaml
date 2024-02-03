@@ -11,8 +11,9 @@ cloudhub:
   bg: "Student"
   appName: "gitacctionmule"
   environment: "Sandbox"
+  region: "us-east-2"
   workerType: "Micro"
   workers: "1"
 
-app:
-    runtime: "4.4.0"
+mule:
+    version: "4.4.0"
