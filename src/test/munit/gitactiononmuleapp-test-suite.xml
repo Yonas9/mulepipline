@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="gitactiononmuleapp-test-suite.xml" />
+	<munit:test name="gitactiononmuleapp-test-suite-gitactiononmuleappFlowTest" doc:id="6f9b426f-ba24-489e-9770-95af9a81cec4" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to gitactiononmuleappFlow" doc:id="d7d2b062-deb7-40aa-addb-23c057d5521f" name="gitactiononmuleappFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="1aa30d41-8210-4242-a6ce-825d1831e42c" actual="#[payload]" expected='#["Learn how github action works" as String]'/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
 	<artifactId>gitactiononmuleapp</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
-
 	<name>gitactiononmuleapp</name>
 
 	<properties>
@@ -18,9 +15,11 @@
 		<app.runtime>4.4.0</app.runtime>
 		<mule.maven.plugin.version>3.8.4</mule.maven.plugin.version>
 		<env>Sandbox</env>
+		<munit.version>2.3.14</munit.version>
 	</properties>
 
 	<build>
+		<defaultGoal>deploy</defaultGoal>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -30,22 +29,47 @@
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
+				<version>3.8.1</version>
 				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
-						<muleVersion>4.4.0</muleVersion>
-						<username>${cloudhub.username}</username>
-						<password>${cloudhub.password}</password>
+						<muleVersion>${app.runtime}</muleVersion>
+						<username>cloudhub.username</username>
+						<password>clodhub.password</password>
 						<applicationName>${cloudhub.appName}</applicationName>
 						<businessGroup>${cloudhub.bg}</businessGroup>
 						<environment>${cloudhub.environment}</environment>
 						<region>${cloudhub.region}</region>
 						<workers>${cloudhub.workers}</workers>
 						<workerType>${cloudhub.workerType}</workerType>
-						
+						<properties>
+							<key>value</key>
+						</properties>
 					</cloudHubDeployment>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.mulesoft.munit.tools</groupId>
+				<artifactId>munit-maven-plugin</artifactId>
+				<version>${munit.version}</version>
+				<executions>
+					<execution>
+						<id>test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+							<goal>coverage-report</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<coverage>
+						<runCoverage>true</runCoverage>
+						<formats>
+							<format>html</format>
+						</formats>
+					</coverage>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -63,6 +87,26 @@
 			<artifactId>mule-sockets-connector</artifactId>
 			<version>1.2.3</version>
 			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-runner</artifactId>
+			<version>2.3.14</version>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-tools</artifactId>
+			<version>2.3.14</version>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.weave</groupId>
+			<artifactId>assertions</artifactId>
+			<version>1.0.2</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -83,13 +127,8 @@
 
 	<pluginRepositories>
 		<pluginRepository>
-			<id>mulesoft-releases</id>
-			<name>MuleSoft Releases Repository</name>
-			<layout>default</layout>
-			<url>https://repository.mulesoft.org/releases/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
+			<id>mule-public</id>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
 		</pluginRepository>
 	</pluginRepositories>
 
