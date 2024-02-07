@@ -14,6 +14,7 @@
 
 		<app.runtime>4.4.0</app.runtime>
 		<mule.maven.plugin.version>3.8.4</mule.maven.plugin.version>
+		<app.name>yon-github-actions</app.name>
 		<env>Sandbox</env>
 		<munit.version>2.3.14</munit.version>
 	</properties>
@@ -29,7 +30,7 @@
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.8.2</version>
 				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
@@ -38,14 +39,14 @@
 						<username>cloudhub.username</username>
 						<password>clodhub.password</password>
 						<applicationName>${cloudhub.appName}</applicationName>
-						<businessGroup>${cloudhub.bg}</businessGroup>
 						<environment>${cloudhub.environment}</environment>
+						<businessGroup>${cloudhub.bg}</businessGroup>
+						
 						<region>${cloudhub.region}</region>
 						<workers>${cloudhub.workers}</workers>
 						<workerType>${cloudhub.workerType}</workerType>
-						<properties>
-							<key>value</key>
-						</properties>
+						<objectStoreV2>true</objectStoreV2>
+						
 					</cloudHubDeployment>
 				</configuration>
 			</plugin>
